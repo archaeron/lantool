@@ -49,7 +49,7 @@ function error($text)
 
 function has_voted_on($poll, $userid)
 {
-	if($userid == 0 or !isset($poll['options'])) return false;
+	if(!isset($poll['options'])) return false;
 	else
 	{
 		foreach($poll['options'] as $opts)
@@ -71,7 +71,7 @@ function custom_error_handler($errno, $errstr, $errfile, $errline)
 	switch ($errno) {
     case E_USER_ERROR: case E_ERROR:
     	echo '<div class="_php_error">';
-        echo "<h2>ERROR</h2> $errstr<br />\n";
+        echo "<h2><img src=\"icons/exclamation.png\" alt=\"error\"> ERROR</h2> $errstr<br />\n";
         echo "  Fatal error on line $errline in file $errfile";
         echo ", PHP " . PHP_VERSION . " (" . PHP_OS . ")<br />\n";
         echo "Aborting...</div><br />\n";
@@ -80,17 +80,19 @@ function custom_error_handler($errno, $errstr, $errfile, $errline)
 
     case E_USER_WARNING: case E_WARNING:
     	echo '<div class="_php_warning">';
-        echo "<h2>WARNING</h2> $errstr</div><br />\n";
+        echo "<h2><img src=\"icons/error.png\" alt=\"warning\"> WARNING</h2>
+        <small>on line $errline in file $errfile.</small><br> $errstr</div><br />\n";
         break;
 
     case E_USER_NOTICE: case E_NOTICE:
     	echo '<div class="_php_notice">';
-        echo "<h2>NOTICE</h2> $errstr</div><br />\n";
+        echo "<h2><img src=\"icons/information.png\" alt=\"notice\"> NOTICE</h2>
+        <small>on line $errline in file $errfile.</small><br> $errstr</div><br />\n";
         break;
 
     default:
     	echo '<div class="_php_error">';
-        echo "Unknown error type: [$errno] $errstr</div><br />\n";
+        echo "<h2>Unknown error type: [$errno]</h2> <small>on line $errline in file $errfile.</small><br> $errstr</div><br />\n";
         break;
     }
 

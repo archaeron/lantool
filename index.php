@@ -32,7 +32,6 @@ $POLL_TYPES = array('yesno'  => 'Ja / Nein',
 					'choice' => 'Auswahl',
 					'team' => 'Team-Auswahl');
 
-
 //  PARAMETERS
 ////////////////////////////////////////////////////////////////////////
 

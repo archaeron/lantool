@@ -164,6 +164,7 @@ tr .logged_in
 	background-color: #eee;
 	border: 1px solid #FFF;
 	padding: 15pt;
+	margin: 15pt;
 	
 	border-radius: 4px;
 	box-shadow: 10px 10px 10px #111;
@@ -174,15 +175,15 @@ tr .logged_in
 
 ._php_error
 {
-	box-shadow: 0 0 5px #F00 inset;
+	background: -moz-linear-gradient(top,  #eaa,  #ddd);
 }
 
 ._php_warning
 {
-	box-shadow: 0 0 5px #FA0 inset;
+	background: -moz-linear-gradient(top,  #eca,  #ddd);
 }
 
 ._php_notice
 {
-	box-shadow: 0 0 5px #FF0 inset;
+	background: -moz-linear-gradient(top,  #eea,  #ddd);
 }

@@ -14,6 +14,7 @@ if($action == 'receive_new_poll')
 			                  'title' => html_encode($_POST['title']),
 			                  'expiration_date' => $time,
 			                  'options' => array(),
+			                  'creator' => $userid,
 			                  'comment' => html_encode($_POST['comment']));
 			
 			if($new_poll['type'] == 'yesno')
@@ -33,7 +34,7 @@ if($action == 'receive_new_poll')
 			} elseif($new_poll['type'] == 'team')
 			{
 				$new_poll['allow_new_teams'] = (isset($_POST['allow_new_teams']) and $_POST['allow_new_teams'] == 'yes');
-				$new_poll['max_per_team'] = abs(intval($_POST['max_per_team']));
+				//$new_poll['max_per_team'] = abs(intval($_POST['max_per_team']));
 				
 				$nr_teams = abs(intval($_POST['nr_teams']));
 				
