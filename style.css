@@ -156,3 +156,33 @@ tr .logged_in
 {
 	background-color: #8DDB0E;
 }
+
+
+/* PHP stuff */
+._php_error, ._php_warning, ._php_notice
+{
+	background-color: #eee;
+	border: 1px solid #FFF;
+	padding: 15pt;
+	
+	border-radius: 4px;
+	box-shadow: 10px 10px 10px #111;
+	
+	background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#ddd));
+	background: -moz-linear-gradient(top,  #eee,  #ddd);
+}
+
+._php_error
+{
+	box-shadow: 0 0 5px #F00 inset;
+}
+
+._php_warning
+{
+	box-shadow: 0 0 5px #FA0 inset;
+}
+
+._php_notice
+{
+	box-shadow: 0 0 5px #FF0 inset;
+}

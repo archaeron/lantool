@@ -1,6 +1,9 @@
 <?php session_start(); $_SESSION['asdf'] = 'foo';
 error_reporting(E_ALL);
 
+require_once('functions.php');
+set_error_handler("custom_error_handler");
+
 $LANTOOL='asdf';
 
 if(session_id() == "") die("No session-ID.");?>
@@ -29,8 +32,6 @@ $POLL_TYPES = array('yesno'  => 'Ja / Nein',
 					'choice' => 'Auswahl',
 					'team' => 'Team-Auswahl');
 
-
-require_once('functions.php');
 
 //  PARAMETERS
 ////////////////////////////////////////////////////////////////////////

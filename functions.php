@@ -60,6 +60,44 @@ function has_voted_on($poll, $userid)
 	}
 }
 
+function custom_error_handler($errno, $errstr, $errfile, $errline)
+{
+	if (!(error_reporting() & $errno)) {
+        // This error code is not included in error_reporting
+        return;
+    }
+
+	// see http://www.php.net/manual/en/errorfunc.constants.php
+	switch ($errno) {
+    case E_USER_ERROR: case E_ERROR:
+    	echo '<div class="_php_error">';
+        echo "<h2>ERROR</h2> $errstr<br />\n";
+        echo "  Fatal error on line $errline in file $errfile";
+        echo ", PHP " . PHP_VERSION . " (" . PHP_OS . ")<br />\n";
+        echo "Aborting...</div><br />\n";
+        exit(1);
+        break;
+
+    case E_USER_WARNING: case E_WARNING:
+    	echo '<div class="_php_warning">';
+        echo "<h2>WARNING</h2> $errstr</div><br />\n";
+        break;
+
+    case E_USER_NOTICE: case E_NOTICE:
+    	echo '<div class="_php_notice">';
+        echo "<h2>NOTICE</h2> $errstr</div><br />\n";
+        break;
+
+    default:
+    	echo '<div class="_php_error">';
+        echo "Unknown error type: [$errno] $errstr</div><br />\n";
+        break;
+    }
+
+    /* Don't execute PHP internal error handler */
+    return true;
+}
+
 //  SAVE & LOAD
 ////////////////////////////////////////////////////////////////////////
 
