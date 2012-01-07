@@ -113,7 +113,7 @@ else if($action == 'set_nick' and $logged_in)
 }
 else if($action == 'create_user')
 {
-	$name = html_en($_POST['user']);
+	$name = html_encode($_POST['user']);
 	$pw   = md5($_POST['password']);
 	
 	if(username_exists($name))
