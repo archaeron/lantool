@@ -1,0 +1,158 @@
+html
+{
+	background-color: #222;
+	background-image: url(diag_lines1.png);
+	font-family: sans-serif;
+}
+
+a
+{
+	color: #FF6138;
+	text-decoration: none;
+}
+
+.error
+{
+	color: #F43;
+}
+
+h1, h2, h3, h4
+{
+	margin-top: 2pt;
+	margin-top: 2pt;
+	
+	font-family: sans-serif;
+}
+
+a h1, a h2
+{
+	color: black;
+	text-decoration: underline;
+}
+
+
+
+#content
+{
+	width: 60%;
+}
+
+#content, #menu
+{
+	margin: 20pt;
+	float: left;
+	display: inline;
+}
+
+#content, #links, #account
+{
+	background-color: #eee;
+	border: 1px solid #FFF;
+	padding: 15pt;
+	
+	border-radius: 4px;
+	box-shadow: 10px 10px 10px #111;
+	
+	background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#ddd));
+	background: -moz-linear-gradient(top,  #eee,  #ddd);
+}
+
+#account
+{
+	margin-top: 20pt;
+}
+
+#menu
+{
+	margin-right: 0;
+}
+
+
+ul
+{
+	padding-left: 20px;
+	list-style-image: url(icons/bullet_red.png);
+}
+
+td
+{
+	padding: 3pt;
+	padding-left:  10pt;
+	padding-right: 10pt;
+}
+
+thead td
+{
+	border-bottom: 2px solid #333;
+	background-color: #fff;
+}
+
+striped tr:nth-child(odd)
+{
+	background-color: #B2FF7A;
+}
+
+striped tr:nth-child(even)
+{
+	background-color: #C3FF99;
+}
+
+tr.tr_link:hover, tr.tr_hover:hover
+{
+	background-color: #CFF55D;
+	
+}
+
+tr.tr_link
+{
+	cursor: pointer;
+}
+
+img
+{
+	border: 0;
+}
+
+hr
+{
+	border: 1px solid #555;
+}
+
+hr.light
+{
+	border: 1px solid #bbb;
+}
+
+#nick_form input[type="image"]
+{
+	vertical-align: middle;
+}
+
+textarea
+{
+	width: 100%;
+	height: 200pt;
+}
+
+.yes_button, .no_button
+{
+	font-size: 30pt;
+	font-weight: bold;
+	width: 300px;
+	height: 200px;
+}
+
+.yes_button
+{
+	color: #8DDB0E;
+}
+
+.no_button
+{
+	color: #ED240F;
+}
+
+tr .logged_in
+{
+	background-color: #8DDB0E;
+}
