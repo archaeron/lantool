@@ -15,16 +15,17 @@ elseif($action == 'set_password')
 
 echo '<h2>Benutzerverwaltung</h2>';
 
-echo '<table><tr style="font-weight:bold"><td>Name</td> <td>Passwort setzen</td> <td></td></tr>';
+echo '<table><tr style="font-weight:bold"> <td>Name</td> <td>Passwort setzen</td> <td>IP</td> <td></td></tr>';
 foreach($users as $uid => $user)
 {
-	if(empty($user['sessionid']))
+	if(empty($user['session_id']))
 		echo '<tr>';
 	else
 		echo '<tr class="logged_in">';
 		
 	echo '<td>'.$user['name'].'</td>';
 	echo '<td><form action="?action=set_password&id='.$uid.'" method="post"><input type="password" value="" name="password"><input type="submit" value="set"></form></td>';
+	if(isset($user['ip'])) echo '<td>'.$user['ip'].'</td>'; else echo '<td></td>';
 	echo '<td width="16px" style="padding-right:5px"><a href="?action=delete_user&id='.$uid.'" class="ask_if_sure" question="Benutzer \''.$user['name'].'\' löschen?"><img alt="löschen" src="icons/cancel.png"></a></td>';
 	echo '</tr>';
 }

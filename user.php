@@ -28,7 +28,8 @@ $logged_in = false;
 $is_admin  = false;
 $user      = array();
 $login_error = '';
-$userid    = 0;
+$userid    = -1;
+$user_ip   = $_SERVER['REMOTE_ADDR'];
 
 if(session_id() != '')
 {
@@ -56,6 +57,7 @@ if($action == 'login')
 {
 	if(isset($_POST['user']) and isset($_POST['password']))
 	{
+		//$user_ip = $_SERVER["REMOTE_ADDR"];
 		foreach($users as $id => $u)
 		{
 			if(strtolower($u['name']) == strtolower($_POST['user']))
@@ -78,6 +80,7 @@ if($action == 'login')
 				$is_admin = $users[$userid]['is_admin'];
 				$users[$userid]['logged_in']  = true;
 				$users[$userid]['session_id'] = session_id();
+				$users[$userid]['ip'] = $user_ip;
 				
 				save_array_to_file($users, 'data/users.txt');
 			}
@@ -88,6 +91,7 @@ else if($action == 'logout' and $logged_in)
 {
 	$users[$userid]['logged_in']  = false;
 	$users[$userid]['session_id'] = '';
+	//$users[$userid]['ip'] = '';
 	
 	$logged_in = false;
 	$is_admin  = false;
@@ -120,9 +124,19 @@ else if($action == 'create_user')
 		{$login_error = 'Diser Benutzername ist bereits vergeben.'; $action = 'register_user';}
 	else
 	{
-		$users[] = array('name' => $name, 'password' => $pw, 'session_id' => '', 'logged_in' => false, 'is_admin' => false);
-		
+		$user = array('name' => $name, 'password' => $pw, 'session_id' => session_id(), 'logged_in' => true, 'is_admin' => false);
+		$users[] = $user;
 		save_array_to_file($users, 'data/users.txt');
+		$logged_in = true;
+		
+		foreach($users as $i => $u)
+		{
+			if($u['name'] == $name)
+			{
+				$userid = $i;
+				break;
+			}
+		}
 	}
 }
 

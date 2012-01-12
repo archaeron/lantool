@@ -61,7 +61,7 @@ if($poll['type'] == 'yesno')
 {
 	if(!$abgelaufen and $logged_in and $action=='receive_vote' and !has_voted_on($poll, $userid))
 	{
-		$choice = 0;
+		$choice = -1;
 		foreach($poll['options'] as $key => $option)
 			if($key == $_POST['vote'])
 			{
@@ -69,7 +69,7 @@ if($poll['type'] == 'yesno')
 				break;
 			}
 		
-		if(!empty($choice))
+		if($choice >= 0)
 		{
 			$poll['options'][$choice]['voters'][] = $userid;
 			$current_polls[$id] = $poll;
