@@ -1,4 +1,4 @@
-== LANTOOL ==
+# LANTOOL
 
 written by Samuel Bryner
 Licence: GPL v.3
@@ -6,17 +6,16 @@ Licence: GPL v.3
 A small, PHP-based tool for easy creation of polls and voting. Developed
 for use in LAN-parties.
 
-=== SETUP ===
+## SETUP
 
 Delete contents of data/ and give apache/php write permissions to data:
 
- $ rm -f data/*
- 
+ $ rm -f data/* 
  $ chown www-data:www-data data
 
 
 
 
-=== USAGE ===
+## USAGE
 
 To make a user admin, edit data/users.txt and set the "is_admin" flag to 1.
