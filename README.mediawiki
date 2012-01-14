@@ -10,9 +10,8 @@ for use in LAN-parties.
 
 Delete contents of data/ and give apache/php write permissions to data:
 
- $ rm -f data/* 
-
- $ chown www-data:www-data data
+ rm -f data/*
+ chown www-data:www-data data
 
 
 
