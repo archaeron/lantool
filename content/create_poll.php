@@ -84,7 +84,7 @@ else if($action == 'create_poll')
 			<td><input type="checkbox" name="final" checked="checked" /> Auswahl ist endg&uuml;ltig</td><td></td>
 		</tr>-->
 		<tr>
-			<td>L&auml;ft ab in: <input type="text" name="time" value="1 hour"> <small>("5 hours", "tomorrow", ...)</small></td> <td></td>
+			<td>L&auml;ft ab in: <input type="text" name="time" value="10 minutes"> <small>("5 hours", "tomorrow", ...)</small></td> <td></td>
 		</tr>
 		
 		<tr>

@@ -10,6 +10,14 @@ if($action == 'receive_comment')
 		
 		$comment = html_encode($_POST['comment']);
 		
+		// test if user already made this comment (prevent double-posts)
+		if(isset($current_polls[$id]['comments']))
+			foreach($current_polls[$id]['comments'] as $c)
+			{
+				if($c['user'] == $userid and $c['text'] == $comment)
+					die('<h1 class="error">Doppelpost</h1>');
+			}
+		
 		$current_polls[$id]['comments'][] = array('user' => $userid, 'text' => $comment, 'time' => time());
 		save_array_to_file($current_polls, 'data/polls.txt');
 	}

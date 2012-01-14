@@ -60,6 +60,26 @@ function has_voted_on($poll, $userid)
 	}
 }
 
+//  CUSTOM ERROR HANDLERS (to fit in design)
+////////////////////////////////////////////////////////////////////////
+
+// catches fatal errors etc.:
+function custom_shutdown_handler()
+{
+	$e = error_get_last();
+    if(empty($e))
+		return; // no error
+    else if(is_array($e))
+		custom_error_handler($e['type'], $e['message'], $e['file'], $e['line']);
+	else
+	{
+		echo '<div class="_php_error">';
+        echo "<h2>Unknown error</h2>";
+		print_r($e);
+	}
+	
+}
+
 function custom_error_handler($errno, $errstr, $errfile, $errline)
 {
 	if (!(error_reporting() & $errno)) {
@@ -71,28 +91,29 @@ function custom_error_handler($errno, $errstr, $errfile, $errline)
 	switch ($errno) {
     case E_USER_ERROR: case E_ERROR:
     	echo '<div class="_php_error">';
-        echo "<h2><img src=\"icons/exclamation.png\" alt=\"error\"> ERROR</h2> $errstr<br />\n";
-        echo "  Fatal error on line $errline in file $errfile";
+        echo "<h2><img src=\"icons/exclamation.png\" alt=\"error\"> ERROR</h2> $errstr<br /><br />\n";
+        echo "  <small><b>Fatal error</b> on line $errline in file $errfile";
         echo ", PHP " . PHP_VERSION . " (" . PHP_OS . ")<br />\n";
-        echo "Aborting...</div><br />\n";
+        echo "<b>Aborting...</b></small></div><br />\n";
         exit(1);
         break;
 
     case E_USER_WARNING: case E_WARNING:
     	echo '<div class="_php_warning">';
-        echo "<h2><img src=\"icons/error.png\" alt=\"warning\"> WARNING</h2>
-        <small>on line $errline in file $errfile.</small><br> $errstr</div><br />\n";
+        echo "<h2><img src=\"icons/error.png\" alt=\"warning\"> WARNING</h2> $errstr <br><br>\n
+        <small>on line $errline in file $errfile.</small></div><br />\n";
         break;
 
     case E_USER_NOTICE: case E_NOTICE:
     	echo '<div class="_php_notice">';
-        echo "<h2><img src=\"icons/information.png\" alt=\"notice\"> NOTICE</h2>
-        <small>on line $errline in file $errfile.</small><br> $errstr</div><br />\n";
+        echo "<h2><img src=\"icons/information.png\" alt=\"notice\"> NOTICE</h2> $errstr <br><br>\n
+        <small>on line $errline in file $errfile.</small></div><br />\n";
         break;
 
     default:
     	echo '<div class="_php_error">';
-        echo "<h2>Unknown error type: [$errno]</h2> <small>on line $errline in file $errfile.</small><br> $errstr</div><br />\n";
+        echo "<h2>Unknown error type: [$errno]</h2> $errstr <br><br>\n
+		<small>on line $errline in file $errfile.</small></div><br />\n";
         break;
     }
 
@@ -105,13 +126,13 @@ function custom_error_handler($errno, $errstr, $errfile, $errline)
 
 function save_array_to_file($arr, $path)
 {
-	file_put_contents($path, serialize($arr));
+	file_put_contents($path, utf8_encode(serialize($arr)));
 }
 
 
 function load_array_form_file($path)
 {
-	$arr = unserialize(file_get_contents($path));
+	$arr = unserialize(utf8_decode(file_get_contents($path)));
 	return (empty($arr)?array():$arr);
 }
 ?>

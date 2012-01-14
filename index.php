@@ -1,8 +1,12 @@
 <?php session_start(); $_SESSION['asdf'] = 'foo';
 error_reporting(E_ALL);
 
+// send raw HTTP headers to set the content type for MS IE
+header("Content-Type: text/html; charset=UTF-8");
+
 require_once('functions.php');
 set_error_handler("custom_error_handler");
+register_shutdown_function('custom_shutdown_handler'); 
 
 $LANTOOL='asdf';
 
@@ -19,6 +23,7 @@ if(session_id() == "") die("No session-ID.");?>
 		<script type="text/javascript" src="jquery.countdown-de.js"></script>
 		<script type="text/javascript" src="highcharts.js"></script>
 		<script type="text/javascript" src="code.js"></script>
+		<link rel="stylesheet" type="text/css" href="reset.css">
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 
