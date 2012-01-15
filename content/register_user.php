@@ -2,7 +2,7 @@
 
 <h2>Neuer Benutzeraccount anlegen</h2>
 
-<form action="?action=create_user" method="post">
+<form action="?action=create_user" method="post" accept-charset="utf-8">
 	
 	Benutzername:<br />
 	<input type="input" name="user" /><br />

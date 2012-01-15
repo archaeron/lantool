@@ -16,7 +16,7 @@ if($logged_in)
 }
 else
 {
-	echo '<form action="?action=login" method="post">Benutzer:<br/><input type="text" name="user" size=19><br />';
+	echo '<form action="?action=login" method="post" accept-charset="utf-8">Benutzer:<br/><input type="text" name="user" size=19><br />';
 	echo 'Passwort:</br><input type="password" name="password" size=19><br />';
 	echo '<br /> <a href="?action=register_user">registrieren</a> <input type="submit" value="login" style="float:right"><br clear="both" /></form>';
 }

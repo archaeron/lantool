@@ -144,7 +144,7 @@ if(isset($_GET['view_details']) or $poll['type'] == 'team')
 			echo '<hr class="light">'.$comment['text'].'<br /><br /><small><b>'.$users[$comment['user']]['name'].'</b> - '.date('G:i - l d. F', $comment['time']).'</small>';
 
 	if($logged_in)
-		echo '<hr class="light"><div class="ausklappen"><div class="old">Senf dazu geben</div><div class="new"><form action="?action=receive_comment&id='.$id.'" method="post"><textarea style="width: 99%;margin: 5px;height: 100pt;" name="comment"></textarea><br /><input style="float:right; width:40%;" value="speichern" type="submit"></form></div></div>';
+		echo '<hr class="light"><div class="ausklappen"><div class="old">Senf dazu geben</div><div class="new"><form action="?action=receive_comment&id='.$id.'" method="post" accept-charset="utf-8"><textarea style="width: 99%;margin: 5px;height: 100pt;" name="comment"></textarea><br /><input style="float:right; width:40%;" value="speichern" type="submit"></form></div></div>';
 }
 
 ?>

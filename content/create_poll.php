@@ -63,7 +63,7 @@ else if($action == 'create_poll')
 	<h2>neue Abstimmung erstellen</h2>
 	<!-- - Typ<br/>- editierbar (im nachhinein noch umentscheidbar)<br />- Zeitlimit<br />- Teilnehmerlimit, Teamlimit, Teams vorgegeben/userdefined<br /> -->
 	
-	<form action="?action=receive_new_poll" method="post">
+	<form action="?action=receive_new_poll" method="post" accept-charset="utf-8">
 	<table size="100%" border=0>
 		<tr>
 			<td>Titel:</td> <td>Typ:</td>

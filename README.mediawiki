@@ -19,3 +19,5 @@ Delete contents of data/ and give apache/php write permissions to data:
 === USAGE ===
 
 To make a user admin, edit data/users.txt and set the "is_admin" flag to 1.
+
+Demo is available at [http://klamath.ch/~samuel/lantool].

@@ -37,7 +37,7 @@ if(session_id() != '')
 	{
 		if($u['session_id'] == session_id())
 		{
-			$user = $u;
+			$user   = $u;
 			$userid = $uid;
 			break;
 		}
@@ -60,7 +60,8 @@ if($action == 'login')
 		//$user_ip = $_SERVER["REMOTE_ADDR"];
 		foreach($users as $id => $u)
 		{
-			if(strtolower($u['name']) == strtolower($_POST['user']))
+			//if(mb_strtolower($u['name'], 'UTF-8') == mb_strtolower($_POST['user'], 'UTF-8'))
+			if($u['name'] == html_encode($_POST['user'])) // usernames are html-encoded when registring
 			{
 				$user = $u;
 				$userid = $id;
@@ -109,7 +110,7 @@ else if($action == 'set_nick' and $logged_in)
 		$login_error = 'Dieser Benutzername ist bereits vergeben.';
 	else
 	{
-		$user['name'] = $name;
+		$user['name']           = $name;
 		$users[$userid]['name'] = $name;
 		
 		save_array_to_file($users, 'data/users.txt');
